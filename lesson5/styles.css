@@ -1,0 +1,52 @@
+.relative {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin-left: 40px;
+  background-color: red;
+}
+
+img.product {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+  object-fit: contain;
+}
+
+.mall {
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  top: 13px;
+  left: -6px;
+  background-color: red;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mall::before {
+  content: '';
+  position: absolute;
+  top: 35px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  background-color: rgb(123, 5, 5);
+  z-index: -1;
+  transform: rotate(45deg);
+}
+
+.mall::after {
+  content: '';
+  position: absolute;
+  top: 135px;
+  left: 13px;
+  width: 10px;
+  height: 10px;
+  background-color: rgb(25, 172, 174);
+  z-index: 2;
+  transform: rotate(45deg);
+}
