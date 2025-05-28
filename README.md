@@ -31,7 +31,7 @@ website/
 ```
 
 ```CSS
-background-image: url(./assets/images/logo.png);
+background-image: url("./assets/images/logo.png");
 ```
 
 ### 3. Class và ID
@@ -216,9 +216,128 @@ Nếu một trong các phần tử con có giá trị là 2, phần tử đó s�
 
 <img src="https://css-tricks.com/wp-content/uploads/2018/10/align-self.svg" alt="order" width="400"/>
 
-### 4.5. Position
+### 4.5. Position & transform
+
+| Thuộc tính                     | Giá trị ví dụ                 | Chú thích                                                                |
+| ------------------------------ | ----------------------------- | ------------------------------------------------------------------------ |
+| **position**                   | static                        | Vị trí mới của một element tương quan/liên hệ tới vị trí mặc định của nó |
+|                                | relative                      | Định vị tương đối so với vị trí ban đầu                                  |
+|                                | absolute                      | Định vị tuyệt đối so với phần tử cha gần nhất có position khác static    |
+|                                | fixed                         | Cố định trên màn hình (kể cả khi cuộn trang)                             |
+|                                | sticky                        | Dính vào 1 vị trí khi cuộn tới điểm đó                                   |
+| **top**                        | 10px                          | Khoảng cách từ trên xuống                                                |
+| **right**                      | 20px                          | Khoảng cách từ bên phải                                                  |
+| **bottom**                     | 10px                          | Khoảng cách từ dưới lên                                                  |
+| **left**                       | 15px                          | Khoảng cách từ bên trái                                                  |
+| **transform**                  | translateX(50px, 10px)        | Di chuyển theo trục X, Y                                                 |
+|                                | translateX(50px)              | Di chuyển theo trục X                                                    |
+|                                | translateY(-20px)             | Di chuyển theo trục Y                                                    |
+|                                | scale(1.2)                    | Phóng to hoặc thu nhỏ                                                    |
+|                                | rotate(45deg)                 | Xoay phần tử                                                             |
+|                                | skew(20deg, 10deg)            | Nghiêng phần tử                                                          |
+|                                | matrix(...)                   | Kết hợp nhiều phép biến đổi (ít dùng)                                    |
+| **transform-origin**           | center, top left, 50% 50%     | Tâm xoay/phóng của transform                                             |
+| **transition**                 | all 0.3s ease                 | Gộp nhiều thuộc tính transition                                          |
+| **transition-property**        | background-color, padding,... | Thuộc tính áp dụng chuyển động                                           |
+| **transition-duration**        | 0.5s, 200ms                   | Thời gian thực hiện hiệu ứng                                             |
+| **transition-timing-function** | ease, linear, ease-in-out     | Kiểu tốc độ chuyển đổi                                                   |
+| **transition-delay**           | 0.2s                          | Trì hoãn bắt đầu hiệu ứng                                                |
+
+**Căn giữa item sử dụng position**
+
+```html
+<div class="container">
+  <div class="centered">Centered item</div>
+</div>
+```
+
+```css
+.container {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  background: #f0f0f0;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: lightblue;
+  padding: 10px;
+}
+```
+
+**Pseudo-elements `::before` và `::after`**
+
+`::before`: Chèn nội dung trước nội dung thực của phần tử.  
+`::after`: Chèn nội dung sau nội dung thực của phần tử.
+
+Pseudo-elements dùng để chèn nội dung hoặc trang trí phần tử mà không cần thêm HTML. Không thể dùng cho những thẻ không có phần tử con như input.
+Pseudo-elements có thể dùng những thuộc tính CSS như các thẻ khác, thường dùng để làm khối trang trí cho phần tử cha.
+
+| Thuộc tính                   | Ví dụ                  | Chú thích                               |
+| ---------------------------- | ---------------------- | --------------------------------------- |
+| **content**                  | "★", "\E0B3\00FE0E"    | **Bắt buộc** để hiển thị pseudo-element |
+| **position**                 | absolute, relative,... | Kiểu Định vị vị trí                     |
+| **top, left, right, bottom** | 10px                   | Kiểu Định vị vị trí                     |
+| **z-index**                  | 1, -1                  | Lớp hiển thị trước/sau                  |
 
 ### 4.6. Form
+
+`form` là thẻ dùng để tạo biểu mẫu nhập liệu.
+
+```html
+<form action="/submit" method="post">
+  <!-- inputs -->
+</form>
+```
+
+Trong đó:
+
+- `<form>...</form>`: Thẻ khai báo một form.
+- `action`: Thuộc tính khai báo đường dẫn xử lý dữ liệu sau khi người dùng submit form.
+- `method`: Thuộc tính khai báo phương thức xử lý dữ liệu bao gồm POST và GET.
+
+**Các thẻ thường dùng trong form**  
+| Thẻ HTML | Công dụng | Ví dụ hiển thị |
+| ------------ | -------------------------------------- | --------------------------------------- |
+| `<input>` | Nhập dữ liệu dạng ngắn | `<input type="text">` |
+| `<textarea>` | Nhập dữ liệu dạng dài (nội dung lớn) | `<textarea></textarea>` |
+| `<select>` | Menu nhiều lựa chọn | `<select><option>...</option></select>` |
+| `<label>` | Nhãn cho input (gắn liền với input) | `<label for="email">Email</label>` |
+| `<button>` | Thực hiện hành động (GET, POST API) | `<button type="submit">Submit</button>` |
+| `<fieldset>` | Nhóm các input con trong khung viền | `<fieldset>...</fieldset>` |
+| `<legend>` | Tiêu đề khung viền cho nhóm `fieldset` | `<legend>Thông tin</legend>` |
+
+**Các input type thường dùng**
+| `type` | Mô tả | Ví dụ hiển thị |
+| ---------- | ---------------------------------- | ----------------------------------- |
+| `text` | Nhập chữ ngắn | `<input type="text">` |
+| `password` | Nhập mật khẩu (ẩn ký tự) | `<input type="password">` |
+| `email` | Nhập địa chỉ email | `<input type="email">` |
+| `number` | Nhập số | `<input type="number">` |
+| `checkbox` | Chọn nhiều lựa chọn | `<input type="checkbox">` |
+| `radio` | Chọn 1 trong nhiều lựa chọn | `<input type="radio" name="x">` |
+| `file` | Chọn tệp để tải lên | `<input type="file">` |
+| `submit` | Nút gửi form | `<input type="submit" value="Gửi">` |
+| `reset` | Đặt lại form về trạng thái ban đầu | `<input type="reset">` |
+
+**Các thuộc tính quan trọng trong form**
+
+| Thuộc tính    | Áp dụng cho         | Mô tả                                                        |
+| ------------- | ------------------- | ------------------------------------------------------------ |
+| `action`      | `<form>`            | Đường dẫn nơi gửi dữ liệu                                    |
+| `method`      | `<form>`            | `GET` hoặc `POST`                                            |
+| `name`        | `<input>`,...       | Tên của trường dữ liệu (server dùng tên này để nhận dữ liệu) |
+| `value`       | `<input>`           | Giá trị của input                                            |
+| `placeholder` | `<input>`           | Văn bản gợi ý                                                |
+| `required`    | `<input>`,...       | Bắt buộc nhập mới cho submit                                 |
+| `readonly`    | `<input>`           | Giá trị chỉ đọc (không chỉnh sửa được)                       |
+| `disabled`    | `<input>`,...       | Vô hiệu hóa trường, không cho thao tác                       |
+| `checked`     | `checkbox`, `radio` | Mặc định chọn                                                |
+| `multiple`    | `file`, `select`    | Cho phép chọn nhiều                                          |
 
 ### 4.7. Table
 
