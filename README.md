@@ -341,4 +341,104 @@ Trong đó:
 
 ### 4.7. Table
 
-### 4.8. Responsive
+`table` được dùng để hiển thị dữ liệu dạng bảng (gồm hàng và cột), dành cho hiển thị thông tin có cấu trúc như thời khóa biểu, bảng giá, kết quả thi,...  
+Một số dạng table: https://www.figma.com/design/36BPYZeyUhErxomcPSTe1a/Tables-design-samples--Community-?node-id=0-1&p=f&t=TMiLs3zz2tOTVr0c-0
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nguyen Chau</td>
+      <td>Quyen</td>
+    </tr>
+    <tr>
+      <td>Hoang Van</td>
+      <td>Thong</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+**Các thẻ trong **
+| Thẻ | Ý nghĩa |
+| --------- | ---------------------------------------------------------- |
+| `<table>` | Khởi tạo bảng |
+| `<thead>` | Phần đầu bảng (tiêu đề cột) |
+| `<tbody>` | Phần thân bảng (chưa các dòng dữ liệu) |
+| `<tfoot>` | Phần chân bảng (tổng kết, chú thích,...) |
+| `<tr>` | Table Row – một hàng |
+| `<th>` | Table Header Cell – ô tiêu đề (in đậm, canh giữa mặc định) |
+| `<td>` | Table Data Cell – ô dữ liệu |
+
+**Các thuộc CSS thường dùng cho table**
+
+| Thuộc tính/Thuộc tính CSS | Ý nghĩa                                      | Ví dụ                                                   |
+| ------------------------- | -------------------------------------------- | ------------------------------------------------------- |
+| `border`                  | Viền bảng và ô                               | `border="1"` hoặc CSS: `border: 1px solid #000;`        |
+| `colspan`                 | Hợp nhất nhiều phần tử của các cột gần nhau  | `<td colspan="2">`                                      |
+| `rowspan`                 | Hợp nhất nhiều phần tử của các hàng gần nhau | `<td rowspan="2">`                                      |
+| `text-align`              | Căn lề nội dung trong ô                      | `left`, `center`, `right`                               |
+| `padding`                 | Khoảng cách bên trong ô                      | `padding: 8px;`                                         |
+| `width`, `height`         | Đặt kích thước bảng hoặc ô                   | `width: 100%`                                           |
+| `border-collapse`         | Kiểu viền của ô                              | `separate` (viền đôi - mặc định), `collapse` (viền đơn) |
+
+**Freeze table column**
+
+Reference: https://stackoverflow.com/questions/1312236/how-do-i-create-an-html-table-with-a-fixed-frozen-left-column-and-a-scrollable-b
+
+**:nth-child() Pseudo-class**
+
+```
+:nth-child(index|odd|even|an + b) {
+  background-color: red;
+}
+```
+
+### 4.9. Responsive Web Design
+
+Responsive Web Design (RWD) là phương pháp thiết kế giao diện tự động thích nghi với nhiều kích thước màn hình khác nhau, từ điện thoại, máy tính bảng đến máy tính để bàn với mục tiêu là trang web hiển thị đẹp và dễ sử dụng trên mọi thiết bị.
+
+Có 2 phương pháp thiết kế responsive là Mobile First và Desktop First
+
+**Mobile first**
+
+```css
+.container {
+  flex-direction: column;
+}
+
+/* Khi màn hình >= 768px (tablet, desktop) */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+}
+```
+
+**Desktop first**
+
+```css
+.container {
+  flex-direction: row;
+}
+
+/* Khi màn hình <= 768px (mobile) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+```
+
+**Mobile First vs Desktop First**
+
+| Tiêu chí              | Mobile First                         | Desktop First                        |
+| --------------------- | ------------------------------------ | ------------------------------------ |
+| Điểm bắt đầu          | Viết CSS cho thiết bị mobile trước   | Viết CSS cho desktop trước           |
+| Cách dùng media query | `min-width` (thiết bị >= kích thước) | `max-width` (thiết bị <= kích thước) |
