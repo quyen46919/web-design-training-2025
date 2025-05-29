@@ -5,8 +5,7 @@
 }
 
 .container {
-  width: 100%;
-  /* width: 1920px; */
+  width: 100vw;
   height: 1080px;
   background-color: #e7e6e6;
 }
@@ -78,4 +77,25 @@
   width: 100%;
   height: 90px;
   background-color: #ffe65a;
+}
+
+@media screen and (max-width: 992px) {
+  .container__wrapper {
+    margin: 0;
+  }
+
+  .container__block-wrapper,
+  .container__content-wrapper {
+    flex-direction: column;
+  }
+
+  .container__block--1,
+  .container__block--2,
+  .container__sidebar {
+    width: 100%;
+  }
+
+  .container__sidebar {
+    height: 120px;
+  }
 }

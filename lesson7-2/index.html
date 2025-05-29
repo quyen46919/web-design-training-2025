@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Motel</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <img class="header__logo" src="./images/logo.png" />
+      <div class="header__menu">
+        <a class="header__menu--item">HOME</a>
+        <a class="header__menu--item">ABOUT US</a>
+        <a class="header__menu--item">OUR AGENTS</a>
+        <a class="header__menu--item">PROPERTIES</a>
+        <a class="header__menu--item">GALLERY</a>
+        <a class="header__menu--item">BLOG</a>
+        <a class="header__menu--item">CONTACT US</a>
+        <a class="header__menu--item">SEARCH</a>
+        <i class="fa-solid fa-xmark header__menu--close"></i>
+      </div>
+      <div class="header__menu--bar">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </header>
+  </body>
+  <script>
+    const closeButton = document.querySelector(
+      '.header__menu--close',
+    );
+    const openButton = document.querySelector('.header__menu--bar');
+    const headerMenu = document.querySelector('.header__menu');
+
+    closeButton.addEventListener('click', () => {
+      headerMenu.classList.add('hide');
+      headerMenu.classList.remove('show');
+    });
+    openButton.addEventListener('click', () => {
+      headerMenu.classList.add('show');
+      headerMenu.classList.remove('hide');
+    });
+    // windows resize > 1440px hiển thị menu
+  </script>
+</html>
