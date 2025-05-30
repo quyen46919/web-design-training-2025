@@ -1,5 +1,5 @@
 .container {
-  width: 296px;
+  width: calc(33% - 6.67px);
   height: 324px;
   background-color: antiquewhite;
 }
