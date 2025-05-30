@@ -1,3 +1,5 @@
+## Basic HTML and CSS
+
 ### 1. Thuộc tính của thẻ (attribute)
 
 ---
@@ -442,3 +444,229 @@ Có 2 phương pháp thiết kế responsive là Mobile First và Desktop First
 | --------------------- | ------------------------------------ | ------------------------------------ |
 | Điểm bắt đầu          | Viết CSS cho thiết bị mobile trước   | Viết CSS cho desktop trước           |
 | Cách dùng media query | `min-width` (thiết bị >= kích thước) | `max-width` (thiết bị <= kích thước) |
+
+## Basic Javascript
+
+### 1. Javascript là gì?
+
+---
+
+JavaScript là một ngôn ngữ lập trình được sử dụng chủ yếu trong phát triển web, giúp tạo ra các trang web tương tác, động và phản hồi người dùng một cách linh hoạt. Ban đầu JavaScript được thiết kế để chạy trên trình duyệt, nhưng ngày nay nó còn được sử dụng trong server-side (Node.js runtime), ứng dụng di động, desktop, và thậm chí cả trong IoT.
+
+**Lịch sử phát triển của JS**
+| Mốc thời gian | Sự kiện |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1995** | Brendan Eich tạo ra **JavaScript** chỉ trong **10 ngày** tại Netscape. Ban đầu tên là **Mocha**, sau đổi thành **LiveScript**, cuối cùng là **JavaScript** nhằm "ăn theo" sự nổi tiếng của Java. |
+| **1996** | Microsoft tạo ra **JScript**, bản sao của JavaScript để dùng trong trình duyệt Internet Explorer. |
+| **1997** | JavaScript được chuẩn hóa bởi **ECMA International**, với tên gọi **ECMAScript** (viết tắt là ES). |
+| **2009** | **Node.js** ra đời – một môi trường chạy JavaScript trên máy chủ, mở rộng khả năng của JS ra ngoài trình duyệt. |
+| **2015** | **ECMAScript 6 (ES6)** ra đời – bản cập nhật lớn với cú pháp hiện đại như `let/const`, arrow function, class, module, promise... |
+| **2016 – nay** | JavaScript liên tục được cập nhật hàng năm với các phiên bản ES7, ES8... Thư viện và framework như **React**, **Vue**, **Angular**, **Svelte**, v.v. giúp phát triển ứng dụng mạnh mẽ hơn. |
+| **Hiện tại** | JavaScript là một trong những ngôn ngữ **phổ biến nhất thế giới**, được hỗ trợ bởi cộng đồng đông đảo, các trình duyệt hiện đại và môi trường đa dạng như web, server, mobile, AI, IoT... |
+
+**Độ phổ biến**
+
+<img src="https://www.codica.com/static/62bd7513f767b67cf125f080407fa663/924f5/Java_Script_b21e2cb4c1.webp" alt="Top programming languages to learn in 2022
+" width="700"/>
+
+**Điểm nổi bật của JS**
+
+- Chạy trực tiếp trên trình duyệt, không cần biên dịch.
+- Linh hoạt hỗ trợ lập trình hàm, hướng đối tượng, bất đồng bộ (async).
+- Dễ học nhưng khó thành thạo.
+- Cộng đồng lớn, nhiều thư viện hỗ trợ như React, Vue, Lodash, Axios,... giúp việc phát triển các sản phẩm phần mềm nhanh và hiệu quả hơn.
+
+**Javascript có thể làm được gì?**
+
+<img src="https://d2i2xyh28mr8fx.cloudfront.net/wp-content/uploads/2023/01/26131345/Use-of-JavaScript.png" width="700"/>
+
+### 2. Làm thế nào để thực thi code JS?
+
+---
+
+### Cách 1: Chạy JS từ HTML
+
+```HTML
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test JS</title>
+</head>
+<body>
+  <h1>Demo JavaScript</h1>
+  <script>
+    console.log("Hello world!");
+    alert("Hello world!");
+  </script>
+
+  <!-- Hoặc link file script.js vào -->
+  <script src="./script.js"></script>
+</body>
+</html>
+```
+
+### Cách 2: Dùng DevTools Console (dùng để test hoặc debug)
+
+1. Mở trình duyệt (Chrome, Firefox, Edge…).
+2. Nhấn F12 hoặc chuột phải chọn Inspect → Tab Console.
+3. Gõ code JavaScript vào đó và nhấn Enter để chạy.
+
+### Cách 3: Chạy JavaScript bằng Node.js (ngoài trình duyệt)
+
+1. Truy cập https://nodejs.org → Tải và cài đặt phiên bản LTS.
+2. Tạo file `example.js`
+
+```js
+console.log('Hello world, this is NodeJS!');
+```
+
+3. Mở terminal hoặc CMD, gõ lệnh:
+
+```js
+node example.js
+```
+
+kết quả
+
+```cmd
+Hello world, this is NodeJS!
+```
+
+### 3. Biến (Variable) trong Javascript
+
+---
+
+| Từ khóa | Đặc điểm chính                                 | Nên dùng khi nào                    |
+| ------- | ---------------------------------------------- | ----------------------------------- |
+| `var`   | **phạm vi hàm**, có hoisting                   | Hạn chế dùng                        |
+| `let`   | **phạm vi khối `{}`**, có thể thay đổi giá trị | Dùng khi giá trị sẽ thay đổi        |
+| `const` | **phạm vi khối `{}`**, **không thể gán lại**   | Dùng khi giá trị **không thay đổi** |
+
+**Tip**: Hãy luôn dùng **const** cho đến khi cần **let**
+
+### Hoisting
+
+**Hoisting** (tạm dịch: kéo lên trên) là một cơ chế trong JavaScript mà trong đó các khai báo biến và hàm được "kéo lên đầu" phạm vi của chúng trước khi mã được thực thi.
+
+```js
+var a; // hoisting
+console.log(a); // undefined
+a = 5; // gán sau
+```
+
+- `let` và `const` cũng được hoisting phần khai báo, nhưng không được sử dụng trước khi khai báo
+- `Hàm (function)` được hoisting hoàn toàn
+- Best Practice: Luôn khai báo biến ở đầu block để tránh rối loạn hoisting
+
+### 4. Kiểu dữ liệu của biến
+
+---
+
+| #   | Kiểu dữ liệu | Mô tả                                                                                     |
+| --- | ------------ | ----------------------------------------------------------------------------------------- |
+| 1   | `number`     | Số nguyên hoặc số thực, số nguyên bị giới hạn trong khoảng ±(2^53-1)                      |
+| 2   | `bigint`     | Dùng cho số nguyên có độ dài tùy ý (rất lớn)                                              |
+| 3   | `string`     | Dùng cho chuỗi ký tự, không có kiểu ký tự đơn lẻ (như `char`)                             |
+| 4   | `boolean`    | Dùng cho giá trị đúng/sai (`true` / `false`)                                              |
+| 5   | `null`       | Đại diện cho giá trị chưa biết – là một kiểu riêng, chỉ có một giá trị là `null`          |
+| 6   | `undefined`  | Đại diện cho giá trị chưa được gán – là một kiểu riêng, chỉ có một giá trị là `undefined` |
+| 7   | `symbol`     | Dùng để tạo định danh (identifier) duy nhất                                               |
+| 8   | `object`     | Kiểu không nguyên thủy (non-primitive), dùng cho cấu trúc dữ liệu phức tạp                |
+
+```js
+const age = 18;
+const name = 'Chau Quyen';
+const isActive = true;
+const student = {
+  name: 'Nguyen Chau Quyen',
+  age: 18,
+  code: 3512,
+};
+let flexibleVariable; // count will be undefined
+flexibleVariable = 1;
+flexibleVariable = 'Hello';
+flexibleVariable = true;
+flexibleVariable = {
+  name: 'I dont know why =)))',
+};
+```
+
+**Phân biệt null và undefined**
+
+| Tiêu chí                 | `null`                                                              | `undefined`                                                    |
+| ------------------------ | ------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Ý nghĩa**              | Biểu thị **"không có giá trị"** (giá trị rỗng có chủ đích)          | Biểu thị **"chưa được gán giá trị"** hoặc **"không xác định"** |
+| **Kiểu dữ liệu**         | Là một **kiểu dữ liệu riêng biệt** (`null`)                         | Là một **kiểu dữ liệu riêng biệt** (`undefined`)               |
+| **Nơi tạo ra**           | Do **lập trình viên tự gán**                                        | Do **JavaScript tự gán** khi biến chưa được gán giá trị        |
+| **Sử dụng thường gặp**   | Dùng để **xóa giá trị** hoặc biểu thị **rỗng một cách có chủ đích** | Dùng khi **khai báo biến nhưng chưa gán giá trị**              |
+| **So sánh lỏng (`==`)**  | `null == undefined` => `true`                                       | `undefined == null` => `true`                                  |
+| **So sánh chặt (`===`)** | `null === undefined` => `false`                                     | `undefined === null` => `false`                                |
+| **typeof**               | `typeof null` => `"object"`                                         | `typeof undefined` => `"undefined"`                            |
+| **Ví dụ**                | `let a = null;` → a đã được gán là rỗng                             | `let b;` → b chưa được gán gì nên mặc định là `undefined`      |
+
+### Quy tắc đặt tên biến
+
+- Bắt đầu bằng `chữ cái`, `_`, hoặc `$`.
+- Không bắt đầu bằng số.
+- Phân biệt chữ hoa/thường (name ≠ Name).
+- Tránh dùng từ khóa (let, if, for, class, ...).
+
+**Các kiểu đặt tên biến**
+
+| Kiểu đặt tên           | Ví dụ       | Dùng cho                                                           |
+| ---------------------- | ----------- | ------------------------------------------------------------------ |
+| `camelCase`            | userName    | Biến, Hàm                                                          |
+| `PascalCase`           | UserProfile | Lớp (class), Component (React)                                     |
+| `snake_case`           | user_name   | Thường dùng trong API                                              |
+| `kebab-case`           | user-name   | Không hợp lệ trong JS thuần, được dùng cho các thẻ thư viện của JS |
+| `SCREAMING_SNAKE_CASE` | MAX_LENGTH  | Hằng số (const không đổi)                                          |
+
+### 5. Function
+
+---
+
+Function hay còn gọi là hàm, bản chất nó là một đoạn code được dùng để thực thi một nhiệm vụ nào đó. Các đoạn code bên trong một function được gọi là function body, các đoạn code này sẽ không được biên dịch cho đến khi nào function đó được gọi.
+
+Thành phần cấu tạo nên function:
+
+- Từ khoá function
+- Tham số hàm (arguments): optional, chỉ nên tối đa có 3 tham số
+- Boby
+- Return statement: optional
+
+**Function declaration (Khai báo chuẩn)**
+
+```js
+function sayHello(name) {
+  // body of function
+  console.log('Welcome', name);
+}
+```
+
+**Function Expression (Gán hàm cho biến)**
+
+```js
+const sayHi = function () {
+  console.log('Hi!');
+};
+sayHi(); // result: "Hi!"
+```
+
+**Arrow Function (Cú pháp ES6)**
+
+```js
+const sum = (a, b) => a + b;
+console.log(sum(3, 5)); // result: 8
+```
+
+**Anonymous Function (Hàm vô danh)**
+
+Anonymous function là hàm không có tên. Thay vì khai báo như `function myFunction()`, ta chỉ định nghĩa hàm mà không gán tên, và thường gán trực tiếp vào biến hoặc truyền làm đối số cho hàm khác, đây là một dạng của `arrow function`
+
+```js
+const button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+  console.log('Button clicked!!!');
+});
+```
